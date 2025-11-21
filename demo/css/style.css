@@ -394,6 +394,16 @@ html {
 .formosalube-container .news-cont .aNew .text-info {
   padding: 20px 20px 30px 20px;
 }
+.formosalube-container .news-cont .aNew .text-info ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.formosalube-container .news-cont .aNew .text-info ul li {
+  font-size: 15px;
+  color: #374649;
+  font-weight: 300;
+  line-height: 1.7;
+}
 .formosalube-container .news-cont .aNew .text-info h3 {
   font-size: 20px;
   color: #374649;
@@ -412,6 +422,10 @@ html {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+.formosalube-container .news-cont .aNew .text-info p .f-ss {
+  font-size: 13px;
+  color: #3559f6;
 }
 .formosalube-container .news-cont .aNew .more {
   margin-top: auto;
