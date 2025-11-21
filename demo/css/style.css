@@ -205,6 +205,9 @@ html {
   flex-direction: column;
 }
 
+.pushy-content ul {
+  padding-top: 10px;
+}
 .pushy-content ul li {
   font-size: 15px;
 }
@@ -215,20 +218,18 @@ html {
 }
 .pushy-content .other-info {
   margin-top: auto;
-  padding: 20px 30px;
+  padding: 20px;
+}
+.pushy-content .other-info a.line {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin-bottom: 10px;
 }
 .pushy-content .other-info .copyrights {
   font-size: 11px;
   padding: 10px 0;
-}
-.pushy-content .other-info ul li {
-  border-bottom: none;
-}
-.pushy-content .other-info ul li a {
-  font-size: 15px;
   color: #374649;
-  padding: 10px 0;
-  display: block;
 }
 
 .formosalube-header {
@@ -270,7 +271,7 @@ html {
 }
 .formosalube-header .right-menu ul {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
@@ -287,6 +288,16 @@ html {
 .formosalube-header .right-menu ul li a:hover {
   border-color: #e70000;
 }
+.formosalube-header .right-menu ul li a.line {
+  width: 40px;
+  height: 40px;
+  display: block;
+  padding: 0;
+}
+.formosalube-header .right-menu ul li a.line:hover {
+  border-color: transparent;
+  opacity: 0.8;
+}
 .formosalube-header .menu-btn {
   margin-left: auto;
   background: none;
@@ -301,12 +312,15 @@ html {
   display: block;
   cursor: pointer;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .formosalube-header .logo {
     max-width: 50px;
   }
   .formosalube-header .logo2 {
     max-width: 55px;
+  }
+  .formosalube-header .info-content {
+    padding: 6px 0px 6px 10px;
   }
   .formosalube-header p.slogan {
     font-size: 12px;
