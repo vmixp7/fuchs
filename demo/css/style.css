@@ -221,15 +221,38 @@ html {
   padding: 20px;
 }
 .pushy-content .other-info a.line {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   display: block;
   margin-bottom: 10px;
+}
+.pushy-content .other-info a.line img {
+  width: 100%;
 }
 .pushy-content .other-info .copyrights {
   font-size: 11px;
   padding: 10px 0;
   color: #374649;
+}
+
+.lineQrcode {
+  position: fixed;
+  right: 30px;
+  bottom: 40px;
+  width: 140px;
+  z-index: 2;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1568627451);
+  background-color: #fff;
+}
+.lineQrcode img {
+  width: 100%;
+}
+@media (max-width: 1100px) {
+  .lineQrcode {
+    width: 100px;
+  }
 }
 
 .formosalube-header {
@@ -241,6 +264,7 @@ html {
   border-bottom: 1px solid #f5f9fb;
 }
 .formosalube-header .info-content {
+  position: relative;
   max-width: 1360px;
   margin: 0 auto;
   display: flex;
@@ -249,22 +273,22 @@ html {
   gap: 10px;
 }
 .formosalube-header .logo {
-  max-width: 75px;
+  max-width: 96px;
 }
 .formosalube-header .logo img {
   width: 100%;
 }
 .formosalube-header .logo2 {
-  max-width: 85px;
+  max-width: 120px;
 }
 .formosalube-header .logo2 img {
   width: 100%;
 }
 .formosalube-header p.slogan {
-  padding-left: 20px;
-  font-size: 14px;
+  font-size: 15px;
   color: #e70000;
   line-height: 1.4;
+  font-weight: 400;
 }
 .formosalube-header .right-menu {
   margin-left: auto;
@@ -277,8 +301,9 @@ html {
   margin-right: 10px;
 }
 .formosalube-header .right-menu ul li {
-  font-size: 16px;
+  font-size: 20px;
   color: #374649;
+  font-weight: 400;
 }
 .formosalube-header .right-menu ul li a {
   color: #374649;
@@ -289,10 +314,13 @@ html {
   border-color: #e70000;
 }
 .formosalube-header .right-menu ul li a.line {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   display: block;
   padding: 0;
+}
+.formosalube-header .right-menu ul li a.line img {
+  width: 100%;
 }
 .formosalube-header .right-menu ul li a.line:hover {
   border-color: transparent;
@@ -312,6 +340,11 @@ html {
   display: block;
   cursor: pointer;
 }
+@media (max-width: 1250px) {
+  .formosalube-header .right-menu ul li {
+    font-size: 18px;
+  }
+}
 @media (max-width: 1100px) {
   .formosalube-header .logo {
     max-width: 50px;
@@ -323,7 +356,7 @@ html {
     padding: 6px 0px 6px 10px;
   }
   .formosalube-header p.slogan {
-    font-size: 12px;
+    font-size: 13px;
     padding-left: 10px;
   }
   .formosalube-header .right-menu {
@@ -342,6 +375,53 @@ html {
 }
 .s-height .logo2 {
   max-width: 50px;
+}
+
+.megamenu {
+  position: absolute;
+  background-color: #fff;
+  left: 20px;
+  top: 95px;
+  width: 100%;
+  background-color: #FFF;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+}
+.megamenu .left-item {
+  flex: 250px;
+}
+.megamenu .left-item h3 {
+  color: #e70000;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+.megamenu .left-item h4 {
+  color: #3559f6;
+  font-size: 20px;
+  padding: 20px 0 10px 0;
+}
+.megamenu .left-item h4 span {
+  padding-left: 20px;
+  border-left: 1px solid #3559f6;
+}
+.megamenu .left-item p {
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 3px 0;
+}
+.megamenu .iframe-cont {
+  flex: calc(100% - 250px);
+  overflow-y: auto;
+}
+.megamenu .iframe-cont iframe {
+  width: 100%;
+  max-height: 72vh;
+  overflow-y: scroll;
 }
 
 .formosalube-container {
@@ -439,6 +519,9 @@ html {
 }
 .formosalube-container .news-cont .aNew .text-info p .f-ss {
   font-size: 13px;
+  color: #3559f6;
+}
+.formosalube-container .news-cont .aNew .text-info .day {
   color: #3559f6;
 }
 .formosalube-container .news-cont .aNew .more {
@@ -554,14 +637,13 @@ html {
   font-size: 15px;
   color: #374649;
   font-weight: 300;
-  line-height: 1.7;
-  opacity: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  line-height: 1.5;
+  display: none;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.formosalube-container .service-locations .aLocations .text-info p .f-ss {
+  font-size: 13px;
+  color: #3559f6;
 }
 .formosalube-container .service-locations .aLocations .text-info .more {
   color: #e70000;
@@ -574,7 +656,7 @@ html {
   bottom: 0px;
 }
 .formosalube-container .service-locations .aLocations:hover .text-info p {
-  opacity: 1;
+  display: block;
 }
 .formosalube-container .service-locations .aLocations:hover .text-info .more {
   text-decoration: underline;
@@ -615,14 +697,20 @@ html {
     padding-top: 10px;
   }
 }
+.brands-iframe {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+
 .formosalube-footer {
-  padding: 40px 20px;
+  padding: 20px;
   background-color: #f5f9fb;
   margin-top: auto;
 }
 .formosalube-footer .copy-right-text p {
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.5;
   padding-top: 10px;
   text-align: center;
   color: #374649;
