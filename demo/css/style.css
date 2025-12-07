@@ -194,6 +194,10 @@ body {
   font-size: 100%;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 html {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -236,15 +240,8 @@ html {
 }
 
 .lineQrcode {
-  position: fixed;
-  right: 30px;
-  bottom: 40px;
-  width: 140px;
-  z-index: 2;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1568627451);
-  background-color: #fff;
+  width: 135px;
+  margin-left: auto;
 }
 .lineQrcode img {
   width: 100%;
@@ -261,7 +258,7 @@ html {
   z-index: 99;
   width: 100%;
   background: #fff;
-  border-bottom: 1px solid #f5f9fb;
+  border-bottom: 1px solid #ebf0f3;
 }
 .formosalube-header .info-content {
   position: relative;
@@ -270,19 +267,19 @@ html {
   display: flex;
   padding: 10px 15px;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+}
+.formosalube-header img {
+  width: 100%;
 }
 .formosalube-header .logo {
   max-width: 96px;
 }
-.formosalube-header .logo img {
-  width: 100%;
+.formosalube-header .logo1 {
+  max-width: 430px;
 }
 .formosalube-header .logo2 {
-  max-width: 120px;
-}
-.formosalube-header .logo2 img {
-  width: 100%;
+  max-width: 130px;
 }
 .formosalube-header p.slogan {
   font-size: 15px;
@@ -291,7 +288,13 @@ html {
   font-weight: 400;
 }
 .formosalube-header .right-menu {
-  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+.formosalube-header .right-menu .logo_title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .formosalube-header .right-menu ul {
   display: flex;
@@ -309,6 +312,7 @@ html {
   color: #374649;
   padding: 12px 0 10px;
   border-bottom: 2px solid transparent;
+  display: inline-block;
 }
 .formosalube-header .right-menu ul li a:hover {
   border-color: #e70000;
@@ -349,8 +353,11 @@ html {
   .formosalube-header .logo {
     max-width: 50px;
   }
+  .formosalube-header .logo1 {
+    width: 33vw;
+  }
   .formosalube-header .logo2 {
-    max-width: 55px;
+    max-width: 9vw;
   }
   .formosalube-header .info-content {
     padding: 6px 0px 6px 10px;
@@ -359,7 +366,10 @@ html {
     font-size: 13px;
     padding-left: 10px;
   }
-  .formosalube-header .right-menu {
+  .formosalube-header .right-menu .menu-item {
+    display: none;
+  }
+  .formosalube-header .lineQrcode {
     display: none;
   }
   .formosalube-header .menu-btn {
@@ -370,29 +380,33 @@ html {
 .s-height .info-content {
   padding: 5px 15px;
 }
-.s-height .logo {
-  max-width: 45px;
+.s-height .logo1 {
+  max-width: 25vw;
 }
 .s-height .logo2 {
-  max-width: 50px;
+  max-width: 100px;
+}
+.s-height .lineQrcode {
+  width: 100px;
+}
+.s-height .right-menu ul li {
+  font-size: 18px;
+}
+@media (max-width: 1100px) {
+  .s-height .logo2 {
+    max-width: 7vw;
+  }
 }
 
 .megamenu {
-  position: absolute;
-  background-color: #fff;
-  left: 20px;
-  top: 95px;
   width: 100%;
-  background-color: #FFF;
   overflow-x: hidden;
-  overflow-y: scroll;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
-  padding: 25px;
+  overflow-y: auto;
   display: flex;
 }
 .megamenu .left-item {
   flex: 250px;
+  padding: 25px;
 }
 .megamenu .left-item h3 {
   color: #e70000;
@@ -412,7 +426,12 @@ html {
   cursor: pointer;
   font-size: 16px;
   line-height: 1.5;
-  padding: 3px 0;
+  padding: 5px 0;
+}
+.megamenu .left-item p.active {
+  background-color: #f6f9fb;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 .megamenu .iframe-cont {
   flex: calc(100% - 250px);
@@ -420,8 +439,33 @@ html {
 }
 .megamenu .iframe-cont iframe {
   width: 100%;
-  max-height: 72vh;
+  height: 100vh;
   overflow-y: scroll;
+}
+@media (max-width: 950px) {
+  .megamenu .left-item {
+    flex: 180px;
+    padding: 20px;
+  }
+  .megamenu .iframe-cont {
+    flex: calc(100% - 180px);
+  }
+}
+@media (max-width: 767px) {
+  .megamenu {
+    display: initial;
+  }
+  .megamenu .left-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 15px;
+  }
+  .megamenu .left-item h4 {
+    width: 100%;
+  }
+  .megamenu .iframe-cont {
+    float: 100%;
+  }
 }
 
 .formosalube-container {
@@ -466,6 +510,9 @@ html {
 .formosalube-container .banner-slider .swiper-pagination-bullet-active {
   background: #e70000;
 }
+.formosalube-container .inside-bn .swiper-slide img {
+  aspect-ratio: 1/0.35;
+}
 .formosalube-container .news-cont .mbox {
   display: flex;
   gap: 25px;
@@ -497,6 +544,12 @@ html {
   color: #374649;
   font-weight: 300;
   line-height: 1.7;
+}
+.formosalube-container .news-cont .aNew .text-info h4 {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 20px 0;
+  line-height: 1.5;
 }
 .formosalube-container .news-cont .aNew .text-info h3 {
   font-size: 20px;
@@ -697,10 +750,189 @@ html {
     padding-top: 10px;
   }
 }
+.formosalube-container .about-cont .text {
+  padding: 30px 0;
+}
+.formosalube-container .about-cont .text h4 {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 20px 0;
+}
+.formosalube-container .about-cont .text p {
+  line-height: 1.7;
+  font-size: 17px;
+}
+.formosalube-container .qa-cont .text {
+  padding: 30px 0;
+}
+.formosalube-container .qa-cont .text h4 {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 20px 0;
+  line-height: 1.5;
+}
+.formosalube-container .qa-cont .text p.date {
+  font-size: 13px;
+  color: #3559f6;
+}
+.formosalube-container .qa-cont .text p.info {
+  line-height: 1.7;
+  font-size: 17px;
+  background-color: #f6f9fb;
+  border-radius: 10px;
+  padding: 20px;
+}
+.formosalube-container .service-map .mbox {
+  display: flex;
+  gap: 25px;
+  padding: 30px 20px;
+}
+.formosalube-container .service-map .aLocations {
+  flex: 1;
+  background-color: #f6f9fb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.formosalube-container .service-map .aLocations .l-photo img {
+  width: 100%;
+  aspect-ratio: 1/0.7;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.formosalube-container .service-map .aLocations .text-info {
+  width: 100%;
+  padding: 20px;
+  background-color: #f6f9fb;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.formosalube-container .service-map .aLocations .text-info h3 {
+  font-size: 15px;
+  color: #374649;
+  font-weight: 400;
+  padding-bottom: 10px;
+  line-height: 1.5;
+  font-family: "Roboto", sans-serif;
+}
+.formosalube-container .service-map .aLocations .text-info p {
+  font-size: 15px;
+  color: #374649;
+  font-weight: 300;
+  line-height: 1.5;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.formosalube-container .service-map .aLocations .text-info p .f-ss {
+  font-size: 13px;
+  color: #3559f6;
+}
+@media (max-width: 1200px) {
+  .formosalube-container .service-map .mbox {
+    flex-wrap: wrap;
+  }
+  .formosalube-container .service-map .aLocations {
+    flex: calc(50% - 25px);
+  }
+}
+@media (max-width: 765px) {
+  .formosalube-container .service-map .mbox {
+    flex-wrap: initial;
+    flex-direction: column;
+  }
+  .formosalube-container .service-map .aLocations {
+    flex: 1;
+  }
+  .formosalube-container .service-map .aLocations .text-info {
+    bottom: 0;
+    padding: 15px;
+  }
+}
+.formosalube-container .contact-cont {
+  padding: 30px 0;
+}
+.formosalube-container .contact-cont .mbox {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.formosalube-container .contact-cont h2 {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 20px 0;
+  line-height: 1.5;
+}
+.formosalube-container .contact-cont h2 .must {
+  color: #3559f6;
+  font-size: 14px;
+}
+.formosalube-container .contact-cont form {
+  background-color: #f6f9fb;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.formosalube-container .contact-cont form fieldset {
+  flex: calc(50% - 10px);
+  max-width: calc(50% - 10px);
+}
+.formosalube-container .contact-cont form fieldset .start {
+  color: #3559f6;
+  font-size: 14px;
+}
+.formosalube-container .contact-cont form fieldset label {
+  padding-bottom: 10px;
+  display: block;
+}
+.formosalube-container .contact-cont form fieldset input, .formosalube-container .contact-cont form fieldset textarea, .formosalube-container .contact-cont form fieldset select {
+  width: 100%;
+  padding: 10px;
+  line-height: 1.5;
+}
+.formosalube-container .contact-cont form fieldset.w100 {
+  flex: 100%;
+  max-width: 100%;
+}
+.formosalube-container .contact-cont .bottom-btn {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.formosalube-container .contact-cont .bottom-btn .btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50px;
+  min-width: 140px;
+  border: 1px solid #3559f6;
+  color: #3559f6;
+  font-size: 16px;
+  background-color: transparent;
+}
+.formosalube-container .contact-cont .bottom-btn .btn:hover {
+  opacity: 0.8;
+}
+.formosalube-container .contact-cont .bottom-btn .btn.btn_save {
+  background-color: #3559f6;
+  color: #fff;
+}
+@media (max-width: 765px) {
+  .formosalube-container .contact-cont form fieldset {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
 .brands-iframe {
   width: 100%;
   height: 100vh;
   overflow-y: auto;
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
 }
 
 .formosalube-footer {

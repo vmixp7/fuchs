@@ -35,7 +35,7 @@
                 <li><a href="brands.html">品牌故事</a></li>
                 <li><a href="support.html">技術服務</a></li>
                 <li><a href="contact.html">聯絡我們</a></li>
-                <li><a href="qa.html">常見問題</a></li>
+                <li><a href="qa.html">常見問題</a></li>     
                 <li><a href="jobs.html">人才招募</a></li>
             </ul>
             <div class="other-info">
@@ -70,9 +70,8 @@
                             <li><a href="brands.html">品牌故事</a></li>
                             <li><a href="support.html">技術服務</a></li>
                             <li><a href="contact.html">聯絡我們</a></li>
-                            <li><a href="qa.html">常見問題</a></li>
+                            <li><a href="qa.html">常見問題</a></li>     
                             <li><a href="jobs.html">人才招募</a></li>
-                            <!-- <li><a class="line" target="_blank" href="https://line.me/R/ti/p/@951cwutv"><img src="images/qrcode.jpg" alt="line 好友"></a></li> -->
                         </ul>
                     </nav>
                 </div>
@@ -87,7 +86,23 @@
         </header>
 
         <!-- main -->
-        <iframe class="brands-iframe" src="https://www.fuchs.com/sea/tw/brands/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts"></iframe>
+        <div class="megamenu">
+            <div class="left-item">
+                <h4><span>在福斯工作</span></h4>
+                <p class="tab-button active" data-tab="tab-a1">個人發展前景</p>
+                <p class="tab-button" data-tab="tab-a2">員工</p>
+
+                <h4><span>在福斯求職</span></h4>
+                <p class="tab-button" data-tab="tab-b1">職位空缺</p>
+                <p class="tab-button" data-tab="tab-b2">國際工作機會</p>
+            </div>
+            <div class="iframe-cont">
+                <iframe id="tab-a1" class="tab-content active brands-iframe" src="https://www.fuchs.com/sea/tw/career/working-at-fuchs/personal-prospects/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts">111</iframe>
+                <iframe id="tab-a2" class="tab-content brands-iframe" src="https://www.fuchs.com/sea/tw/career/working-at-fuchs/workforce/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts">222</iframe>
+                <iframe id="tab-b1" class="tab-content brands-iframe" src="https://www.fuchs.com/sea/tw/career/jobs-at-fuchs/sea-vacancies/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts">333</iframe>
+                <iframe id="tab-b2" class="tab-content brands-iframe" src="https://www.fuchs.com/sea/tw/career/jobs-at-fuchs/international-job-opportunities/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts"></iframe>
+            </div>
+        </div>
 
         <!-- footer -->
         <footer class="formosalube-footer">
