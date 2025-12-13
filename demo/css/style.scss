@@ -593,7 +593,7 @@ html{
   }
 
   // about
-  .about-cont{
+  .about-cont, .contact-cont{
     .text{
       padding: 30px 0;
       h4{
@@ -730,6 +730,20 @@ html{
       fieldset{
         flex: calc(50% - 10px);
         max-width: calc(50% - 10px);
+        .flex{
+          display: flex;
+          gap: 10px;
+          height: 40px;
+          align-items: center;
+          justify-content: flex-start;
+          input{
+            width: initial;
+            &.datepicker{
+              width: 50%;
+              max-width: 220px;
+            }
+          }
+        }
         .start{
           color: #3559f6;
           font-size: 14px;

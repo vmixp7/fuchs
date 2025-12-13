@@ -12,14 +12,14 @@
     <meta property="og:url" content="#" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- JS -->
-    <script src="js/menu.js?v=1.2"></script>
+    <script src="js/menu.js?v=1.3"></script>
 
 </head>
 
@@ -86,23 +86,140 @@
         </header>
 
         <!-- main -->
-        <div class="megamenu">
-            <div class="left-item">
-                <h4><span>在福斯工作</span></h4>
-                <p class="tab-button active" data-tab="tab-a1">個人發展前景</p>
-                <p class="tab-button" data-tab="tab-a2">員工</p>
-
-                <h4><span>在福斯求職</span></h4>
-                <p class="tab-button" data-tab="tab-b1">職位空缺</p>
-                <p class="tab-button" data-tab="tab-b2">國際工作機會</p>
-            </div>
-            <div class="iframe-cont">
-                <iframe id="tab-a1" class="tab-content active brands-iframe" src="https://www.fuchs.com/sea/tw/career/working-at-fuchs/personal-prospects/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts">111</iframe>
-                <iframe id="tab-a2" class="tab-content brands-iframe" src="https://www.fuchs.com/sea/tw/career/working-at-fuchs/workforce/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts">222</iframe>
-                <iframe id="tab-b1" class="tab-content brands-iframe" src="https://www.fuchs.com/sea/tw/career/jobs-at-fuchs/sea-vacancies/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts">333</iframe>
-                <iframe id="tab-b2" class="tab-content brands-iframe" src="https://www.fuchs.com/sea/tw/career/jobs-at-fuchs/international-job-opportunities/" frameborder="0"  sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts"></iframe>
-            </div>
-        </div>
+        <main class="formosalube-container">
+            <!-- 1 banner slider-->
+            <section class="banner-slider inside-bn">
+                <div class="mbox">
+                    <!-- Swiper -->
+                    <div class="swiper-cont">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images/photo/banner_2.jpg" width="100%" loading="1" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/photo/Excavator bulldozer in sandpit with raised bucket over blue cloudscape sky_shutterstock_excavatorSandpit_high.jpg" width="100%" loading="1" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/photo/Oilrunner_II.jpg" width="100%" loading="1" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/photo/Shutterstock_684981595.jpg" width="100%" loading="1" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/photo/Shutterstock_1610700505.jpg" width="100%" loading="1" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 2 -->
+            <section class="info-content contact-cont">
+                <div class="mbox">
+                    <div class="text">
+                        <h4>徵才說明2</h4>
+                        <p>林口興業為台塑潤滑油所授權的經銷商，憑藉著優質的專業能力與服務熱忱，得以在競爭的潤滑油市場上占有一席之地。而為了將好的產品與服務可以分享給更多的客戶群，我們需要更多的優質生力軍加入我們的專業銷售團隊，竭誠歡迎您來與我們一起努力。</p>
+                    </div> 
+                    <div class="text">
+                        <h4>工作說明及福利</h4>
+                        <p class="c">工作性質：業務專員/工程師<br>
+                            上班地點：新北市/台中市/高雄市<br>
+                            上班時間：8:00~17:30<br>
+                            休假：週休2日<br>
+                            福利：享勞健保、獎金及津貼<br>
+                            條件：專科以上畢業<br>
+                            薪資：面談(意者請填履歷回傳)</p>
+                    </div>        
+                </div>
+                <div class="mbox">
+                    <h2>履歷回傳</h2>
+                    <form>
+                        <fieldset>
+                            <label for="name">姓名</label>
+                            <div class="fillin">
+                                <input id="name" name="jobs[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <label for="sex">性別</label>
+                            <div class="fillin flex">
+                                <input name="sex" type="radio" value="男">男
+                                <input name="sex" type="radio" value="女">女
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <label for="email">住家電話</label>
+                            <div class="fillin">
+                                <input id="email" name="jobs[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <label for="phone">手機</label>
+                            <div class="fillin">
+                                <input id="phone" name="jobs[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <label for="datepicker">出生日期</label>
+                            <div class="fillin">
+                                <input class="datepicker hasDatepicker" name="jobs[]" type="date" id="dp1765262239889">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <label for="school">最高學歷</label>
+                            <div class="fillin">
+                                <input id="school" name="jobs[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        <fieldset class="w100">
+                            <label for="mail">E-mail</label>
+                            <div class="fillin">
+                                <input id="mail" name="ask_price[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        <fieldset class="w100">
+                            <label for="addr">住址</label>
+                            <div class="fillin">
+                                <input id="addr" name="ask_price[]" type="text" class="fildform">	
+                            </div>
+                        </fieldset>
+                        <fieldset class="w100">
+                            <label for="name">前工作單位</label>
+                            <div class="fillin">
+                                <input id="name" name="jobs[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        <fieldset class="w100">
+                            <label for="title">職稱</label>
+                            <div class="fillin">
+                                <input id="title" name="ask_price[]" type="text" class="fildform">
+                            </div>
+                        </fieldset>
+                        <fieldset class="w100">
+                            <label for="">任職期間：</label>
+                            <div class="fillin flex">
+                               <input class="datepicker " name="" type="date" id="">
+                               到
+                                <input class="datepicker " name="" type="date" id="">
+                            </div>
+                        </fieldset>			
+                        <fieldset class="w100">
+                            <label for="note">自傳</label>
+                            <div class="fillin">
+                                <textarea id="note" name="jobs[]" class="fildform" rows="5"></textarea>
+                            </div>
+                        </fieldset>		
+                        <div class="bottom-btn" id="job_send">
+                            <input type="submit" name="send" class="btn btn_save" value="送出">
+                            <input type="reset" class="btn" value="重填">
+                        </div>
+                    </form>
+                </div>
+            </section>
 
         <!-- footer -->
         <footer class="formosalube-footer">

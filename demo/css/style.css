@@ -750,15 +750,15 @@ html {
     padding-top: 10px;
   }
 }
-.formosalube-container .about-cont .text {
+.formosalube-container .about-cont .text, .formosalube-container .contact-cont .text {
   padding: 30px 0;
 }
-.formosalube-container .about-cont .text h4 {
+.formosalube-container .about-cont .text h4, .formosalube-container .contact-cont .text h4 {
   font-size: 20px;
   font-weight: 400;
   padding: 20px 0;
 }
-.formosalube-container .about-cont .text p {
+.formosalube-container .about-cont .text p, .formosalube-container .contact-cont .text p {
   line-height: 1.7;
   font-size: 17px;
 }
@@ -873,6 +873,20 @@ html {
 .formosalube-container .contact-cont form fieldset {
   flex: calc(50% - 10px);
   max-width: calc(50% - 10px);
+}
+.formosalube-container .contact-cont form fieldset .flex {
+  display: flex;
+  gap: 10px;
+  height: 40px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.formosalube-container .contact-cont form fieldset .flex input {
+  width: initial;
+}
+.formosalube-container .contact-cont form fieldset .flex input.datepicker {
+  width: 50%;
+  max-width: 220px;
 }
 .formosalube-container .contact-cont form fieldset .start {
   color: #3559f6;
