@@ -765,20 +765,35 @@ html {
   line-height: 1.7;
   font-size: 17px;
 }
-.formosalube-container .qa-cont .text {
+.formosalube-container .qa-cont .text, .formosalube-container .newslist-cont .text {
   padding: 30px 0;
 }
-.formosalube-container .qa-cont .text h4 {
+.formosalube-container .qa-cont .text h4, .formosalube-container .newslist-cont .text h4 {
   font-size: 20px;
   font-weight: 400;
   padding: 20px 0;
   line-height: 1.5;
 }
-.formosalube-container .qa-cont .text p.date {
+.formosalube-container .qa-cont .text p.date, .formosalube-container .newslist-cont .text p.date {
   font-size: 13px;
   color: #3559f6;
 }
-.formosalube-container .qa-cont .text p.info {
+.formosalube-container .qa-cont .text p.info, .formosalube-container .newslist-cont .text p.info {
+  line-height: 1.7;
+  font-size: 17px;
+  background-color: #f6f9fb;
+  border-radius: 10px;
+  padding: 20px;
+}
+.formosalube-container .promotions-cont .text {
+  padding: 30px 0;
+}
+.formosalube-container .promotions-cont .text p.date {
+  font-size: 13px;
+  color: #3559f6;
+  padding-bottom: 10px;
+}
+.formosalube-container .promotions-cont .text p.info {
   line-height: 1.7;
   font-size: 17px;
   background-color: #f6f9fb;
