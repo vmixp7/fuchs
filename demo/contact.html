@@ -12,7 +12,7 @@
     <meta property="og:url" content="#" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
 
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
@@ -29,7 +29,7 @@
         <div class="pushy-content">
             <ul>
                 <li><a href="index.html">首頁</a></li>
-                <li><a href="about.html">關於林口興業</a></li>
+                <li><a href="about.html">公司簡介</a></li>
                 <li><a href="product.html">產品</a></li>
                 <li><a href="ndustries.html">行業</a></li>
                 <li><a href="brands.html">品牌故事</a></li>
@@ -64,7 +64,7 @@
                     </div>
                     <nav class="menu-item">
                         <ul>
-                            <li><a href="about.html">關於林口興業</a></li>
+                            <li><a href="about.html">公司簡介</a></li>
                             <li><a href="product.html">產品</a></li>
                             <li><a href="ndustries.html">行業</a></li>
                             <li><a href="brands.html">品牌故事</a></li>
@@ -125,13 +125,15 @@
                         <fieldset>
                             <label for="name"><span class="start">★</span>姓名</label>
                             <div class="fillin">
-                                <input id="name" name="ask_price[]" type="text" class="fildform">
+                                <input id="name" name="ask_price[]" type="text" class="fildform error">
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>
                         <fieldset>
                             <label for="tel"><span class="start">★</span>聯絡電話</label>
                             <div class="fillin">
-                                <input id="tel" name="ask_price[]" type="text" class="fildform">
+                                <input id="tel" name="ask_price[]" type="text" class="fildform error">
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>
                         <fieldset class="w100">
@@ -167,19 +169,22 @@
                         <fieldset>
                             <label for="position"><span class="start">★</span>需求潤滑部位</label>
                             <div class="fillin">
-                                <input id="position" name="ask_price[]" type="text" class="fildform">
+                                <input id="position" name="ask_price[]" type="text" class="fildform error">
+                                 <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>	
                         <fieldset>
                             <label for="usepro"><span class="start">★</span>目前採用產品</label>
                             <div class="fillin">
-                                <input id="usepro" name="ask_price[]" type="text" class="fildform">
+                                <input id="usepro" name="ask_price[]" type="text" class="fildform error">
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>	
                         <fieldset>
                             <label for="quantity"><span class="start">★</span>需求數量(公升)</label>
                             <div class="fillin">
-                                <input id="quantity" name="ask_price[]" type="text" class="fildform">
+                                <input id="quantity" name="ask_price[]" type="text" class="fildform error">
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>
                         <fieldset class="w100">
@@ -200,19 +205,21 @@
                         <fieldset>
                             <label for="name"><span class="start">★</span>姓名</label>
                             <div class="fillin">
-                                <input id="name" name="contact[]" type="text" class="fildform">
+                                <input id="name" name="contact[]" type="text" class="fildform error">
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>
                         <fieldset>
                             <label for="tel"><span class="start">★</span>聯絡電話</label>
                             <div class="fillin">
-                                <input id="tel" name="contact[]" type="text" class="fildform">
+                                <input id="tel" name="contact[]" type="text" class="fildform error">
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>	
                         <fieldset>
                             <label for="area"><span class="start">★</span>住區</label>
                             <div class="fillin">
-                                <select>
+                                <select class="error">
                                     <option value="">請選擇縣市</option>
                                     <option>基隆市</option>
                                     <option>台北市</option>
@@ -237,6 +244,7 @@
                                     <option>金門縣</option>
                                     <option>連江縣</option>
                                 </select>
+                                <span class="s-text-note">必選欄位</span>
                             </div>
                         </fieldset>	
                         <fieldset>
@@ -263,7 +271,8 @@
                         <fieldset class="w100">
                             <label for="question"><span class="start">★</span>問題或建議</label>
                             <div class="fillin">
-                                <textarea id="question" name="contact[]" class="fildform" cols="32" rows="5"></textarea>
+                                <textarea id="question" name="contact[]" class="fildform error" cols="32" rows="5"></textarea>
+                                <span class="s-text-note">必填欄位</span>
                             </div>
                         </fieldset>		
                         <div class="bottom-btn" id="job_send">

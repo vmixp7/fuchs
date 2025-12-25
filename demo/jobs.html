@@ -12,7 +12,7 @@
     <meta property="og:url" content="#" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
 
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
@@ -29,7 +29,7 @@
         <div class="pushy-content">
             <ul>
                 <li><a href="index.html">首頁</a></li>
-                <li><a href="about.html">關於林口興業</a></li>
+                <li><a href="about.html">公司簡介</a></li>
                 <li><a href="product.html">產品</a></li>
                 <li><a href="ndustries.html">行業</a></li>
                 <li><a href="brands.html">品牌故事</a></li>
@@ -64,7 +64,7 @@
                     </div>
                     <nav class="menu-item">
                         <ul>
-                            <li><a href="about.html">關於林口興業</a></li>
+                            <li><a href="about.html">公司簡介</a></li>
                             <li><a href="product.html">產品</a></li>
                             <li><a href="ndustries.html">行業</a></li>
                             <li><a href="brands.html">品牌故事</a></li>
@@ -140,7 +140,8 @@
                         <fieldset>
                             <label for="name">姓名</label>
                             <div class="fillin">
-                                <input id="name" name="jobs[]" type="text" class="fildform">
+                                <input id="name" name="jobs[]" type="text" class="fildform error">
+                                <span class="s-text-note">尚未填寫</span>
                             </div>
                         </fieldset>
                         <fieldset>
@@ -148,6 +149,7 @@
                             <div class="fillin flex">
                                 <input name="sex" type="radio" value="男">男
                                 <input name="sex" type="radio" value="女">女
+                                <span class="s-text-note">請選取性別</span>
                             </div>
                         </fieldset>
                         <fieldset>
