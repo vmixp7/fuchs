@@ -320,43 +320,43 @@ html {
   gap: 20px;
 }
 
-.formosalube-header .right-menu ul {
+.formosalube-header .right-menu .navbar-nav {
   display: flex;
-  gap: 40px;
+  gap: 45px;
   align-items: center;
   justify-content: left;
   margin-left: 10px;
 }
 
-.formosalube-header .right-menu ul li {
+.formosalube-header .right-menu ul .navbar-nav {
   font-size: 25px;
   color: #374649;
   font-weight: 400;
 }
 
-.formosalube-header .right-menu ul li a {
+.formosalube-header .right-menu ul .navbar-nav a {
   color: #374649;
   padding: 12px 0 10px;
   border-bottom: 2px solid transparent;
   display: inline-block;
 }
 
-.formosalube-header .right-menu ul li a:hover {
+.formosalube-header .right-menu ul .navbar-nav a:hover {
   border-color: #e70000;
 }
 
-.formosalube-header .right-menu ul li a.line {
+.formosalube-header .right-menu ul .navbar-nav a.line {
   width: 100px;
   height: 100px;
   display: block;
   padding: 0;
 }
 
-.formosalube-header .right-menu ul li a.line img {
+.formosalube-header .right-menu ul .navbar-nav a.line img {
   width: 100%;
 }
 
-.formosalube-header .right-menu ul li a.line:hover {
+.formosalube-header .right-menu ul .navbar-nav a.line:hover {
   border-color: transparent;
   opacity: 0.8;
 }
@@ -378,7 +378,7 @@ html {
 }
 
 @media (max-width: 1580px) {
-  .formosalube-header .right-menu ul {
+  .formosalube-header .right-menu .navbar-nav {
     gap: 30px;
   }
 
