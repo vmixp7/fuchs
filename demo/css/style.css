@@ -281,7 +281,7 @@ html {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 10px 0px;
+  padding: 10px 50px;
 }
 
 .formosalube-header img {
@@ -293,7 +293,7 @@ html {
 }
 
 .formosalube-header .logo1 {
-  max-width: 700px;
+  max-width: 600px;
 }
 
 .formosalube-header .logo2 {
@@ -329,7 +329,7 @@ html {
 }
 
 .formosalube-header .right-menu ul li {
-  font-size: 28px;
+  font-size: 25px;
   color: #374649;
   font-weight: 400;
 }
@@ -375,6 +375,12 @@ html {
   background-size: 40%;
   display: block;
   cursor: pointer;
+}
+
+@media (max-width: 1580px) {
+  .formosalube-header .right-menu ul {
+    gap: 30px;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -591,7 +597,7 @@ html {
 .formosalube-container .news-cont .mbox {
   display: flex;
   gap: 40px;
-  padding: 50px 0px;
+  padding: 50px 50px;
 }
 
 .formosalube-container .news-cont .aNew {
@@ -979,7 +985,7 @@ html {
 .formosalube-container .service-locations .mbox {
   display: flex;
   gap: 40px;
-  padding: 0px 0px;
+  padding: 0px 50px;
   padding-bottom: 50px;
 }
 
