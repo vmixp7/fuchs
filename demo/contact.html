@@ -12,7 +12,7 @@
     <meta property="og:url" content="#" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css?v=7">
+    <link rel="stylesheet" href="css/style.css?v=8">
 
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
@@ -121,7 +121,7 @@
             <section class="info-content contact-cont">
                 <div class="mbox">
                     <h2>線上詢價<span class="must">(★)欄位必填</span></h2>
-                    <form>
+                    <form id="form-content1" onsubmit="return validateForm1()">
                         <fieldset>
                             <label for="name"><span class="start">★</span>姓名</label>
                             <div class="fillin">
@@ -201,7 +201,7 @@
 
                     </form>
                     <h2>聯絡我們<span class="must">(★)欄位必填</span></h2>
-                    <form>
+                    <form id="form-content2" onsubmit="return validateForm2()">
                         <fieldset>
                             <label for="name"><span class="start">★</span>姓名</label>
                             <div class="fillin">
@@ -322,5 +322,54 @@
             prevEl: '.swiper-button-prev',
         },
     });
-</script>
+
+    function validateForm1() {
+        // 取得所有需要驗證的欄位
+        const fields = document.querySelectorAll('#form-content1 input[type="text"], #form-content1 input[type="email"], #form-content1 textarea');
+        let firstEmptyField = null;
+
+        // 遍歷所有欄位，尋找第一個未填寫的
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+            if (field.value.trim() === '') { // 檢查是否為空 (去除前後空格)
+                firstEmptyField = field;
+                break; // 找到第一個就停止
+            }
+        }
+
+        if (firstEmptyField) {
+            alert("請填寫欄位！"); // 提示使用者
+            firstEmptyField.focus(); // 將游標移到未填寫的欄位
+            
+            return false; // 阻止表單送出
+        } else {
+            alert("表單已填寫完整，正在送出...");
+            return true; // 允許表單送出
+        }
+    }
+
+    function validateForm2() {
+        // 取得所有需要驗證的欄位
+        const fields = document.querySelectorAll('#form-content2 input[type="text"], #form-content2 input[type="email"], #form-content2 textarea');
+        let firstEmptyField = null;
+
+        // 遍歷所有欄位，尋找第一個未填寫的
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+            if (field.value.trim() === '') { // 檢查是否為空 (去除前後空格)
+                firstEmptyField = field;
+                break; // 找到第一個就停止
+            }
+        }
+
+        if (firstEmptyField) {
+            alert("請填寫欄位！"); // 提示使用者
+            firstEmptyField.focus(); // 將游標移到未填寫的欄位
+            
+            return false; // 阻止表單送出
+        } else {
+            alert("表單已填寫完整，正在送出...");
+            return true; // 允許表單送出
+        }
+    }
 </script>

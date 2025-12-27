@@ -12,7 +12,7 @@
     <meta property="og:url" content="#" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css?v=7">
+    <link rel="stylesheet" href="css/style.css?v=8">
 
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
@@ -133,10 +133,9 @@
                             條件：專科以上畢業<br>
                             薪資：面談(意者請填履歷回傳)</p>
                     </div>        
-                </div>
-                <div class="mbox">
+
                     <h2>履歷回傳</h2>
-                    <form>
+                    <form id="form-job" onsubmit="return validateForm()">
                         <fieldset>
                             <label for="name">姓名</label>
                             <div class="fillin">
@@ -261,5 +260,29 @@
             prevEl: '.swiper-button-prev',
         },
     });
-</script>
+
+    function validateForm() {
+        // 取得所有需要驗證的欄位
+        const fields = document.querySelectorAll('#form-job input[type="text"], #form-job input[type="email"], #form-job textarea');
+        let firstEmptyField = null;
+
+        // 遍歷所有欄位，尋找第一個未填寫的
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+            if (field.value.trim() === '') { // 檢查是否為空 (去除前後空格)
+                firstEmptyField = field;
+                break; // 找到第一個就停止
+            }
+        }
+
+        if (firstEmptyField) {
+            alert("請填寫欄位！"); // 提示使用者
+            firstEmptyField.focus(); // 將游標移到未填寫的欄位
+
+            return false; // 阻止表單送出
+        } else {
+            alert("表單已填寫完整，正在送出...");
+            return true; // 允許表單送出
+        }
+    }
 </script>

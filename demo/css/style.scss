@@ -69,7 +69,7 @@ html{
   border-bottom: 1px solid #ebf0f3;
   .info-content{
     position: relative;
-    max-width: 960px;
+    max-width: 1600px;
     margin: 0 auto;
     display: flex;
     padding: 6px 15px;
@@ -89,7 +89,7 @@ html{
     max-width: 150px;
   }
   p.slogan{
-    font-size: 16px;
+    font-size: 18px;
     color: #e70000;
     line-height: 1.4;
     font-weight: 400;
@@ -100,7 +100,7 @@ html{
     .logo_title{
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
     }
     ul{
       display: flex;
@@ -109,7 +109,7 @@ html{
       justify-content: center;
       margin-right: 10px;
       li{
-        font-size: 18px;
+        font-size: 20px;
         color: #374649;
         font-weight: 400;
         a{
@@ -282,9 +282,12 @@ html{
   width: 100%;
   .mbox{
     width: 100%;
-    max-width: 960px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 50px;
+    @media (max-width: 1200px) {
+      padding: 30px;
+    }
   }
   img{
     width: 100%;
@@ -330,8 +333,8 @@ html{
   .news-cont{
     .mbox{
       display: flex;
-      gap: 20px;
-      padding: 20px 20px;
+      gap: 40px;
+      padding: 50px 50px;
     }
     .aNew{
       flex: 1;
@@ -468,7 +471,12 @@ html{
         }
       }
     }
-
+    @media (max-width: 1200px) {
+      .mbox{
+        padding: 30px;
+        gap: 20px;
+      }
+    }
     @media (max-width: 765px) {
       .mbox{
         flex-direction: column;
@@ -478,8 +486,11 @@ html{
   .support-cont{
     .mbox{
       display: flex ;
-      gap: 20px;
-      padding: 20px 20px;
+      gap: 40px;
+      padding: 50px;
+      &:nth-child(2){
+        padding-top: initial;
+      }
     }
     .aSupport1{
       flex: 1;
@@ -656,7 +667,11 @@ html{
         }
       }
     }
-
+    @media (max-width: 1200px) {
+      .mbox{
+        gap: 20px;
+      }
+    }
     @media (max-width: 765px) {
       .mbox{
         flex-direction: column;
@@ -667,8 +682,9 @@ html{
   .service-locations{
     .mbox{
       display: flex;
-      gap: 20px;
-      padding: 0px 20px 20px 20px;
+      gap: 40px;
+      padding: 0px 50px;
+      padding-bottom: 50px;
     }
     .aLocations{
       flex: 1;
@@ -737,6 +753,7 @@ html{
     @media (max-width: 1200px) {
       .mbox{
         flex-wrap: wrap;
+        gap: 20px;
       }
       .aLocations{
         flex: calc(50% - 25px);
@@ -776,7 +793,7 @@ html{
   // about
   .about-cont, .contact-cont{
     .text{
-      padding: 15px 0 0 0;
+      padding: 0 0 15px 0;
       h4{
         font-size: 20px;
         font-weight: 400;
@@ -792,10 +809,10 @@ html{
   // qa, newslist
   .qa-cont, .newslist-cont{
     .mbox{
-      padding: 20px 0;
+      // padding: 20px 0;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 30px;
     }
     .text{
       h4{
@@ -808,6 +825,7 @@ html{
         &.date{
           font-size: 13px;
           color: #3559f6;
+          padding-bottom: 5px;
         }
         &.info{
           line-height: 1.7;
@@ -823,7 +841,7 @@ html{
   // promotions
   .promotions-cont{
     .mbox{
-      padding: 20px 0;
+      // padding: 20px 0;
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -851,7 +869,7 @@ html{
     .mbox{
       display: flex;
       gap: 25px;
-      padding: 0px 20px 20px 20px;
+      padding-top: 0px;
     }
     .aLocations{
       flex: 1;
@@ -928,6 +946,9 @@ html{
       .must{
         color: #3559f6;
         font-size: 14px;
+      }
+      &:nth-child(2){
+        padding-top: 30px;
       }
     }
     form{
@@ -1020,7 +1041,7 @@ html{
   
   // album
   .album-cont{
-    padding: 20px 0;
+    // padding: 20px 0;
     h4{
       font-size: 20px;
       font-weight: 400;
@@ -1029,11 +1050,11 @@ html{
     .album-list{
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
       padding: 20px 0 35px 0;
       .a-album{
         flex: 33.33%;
-        max-width: calc(33.33% - 20px);
+        max-width: calc(33.33% - 30px);
         background-color: #f6f9fb;
         .album-cover{
           img{
@@ -1075,6 +1096,23 @@ html{
             line-height: 1.7;
           }
         }
+        a.more{
+          margin-top: auto;
+          color: #e70000;
+          width: 100%;
+          text-align: right;
+          display: block;
+          font-weight: 400;
+          font-size: 16px;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    @media (max-width: 1200px) {
+      .album-list {
+        gap: 20px;
       }
     }
     @media (max-width: 820px) {
@@ -1116,9 +1154,40 @@ html{
   }
   .seminar-cont{
     .album-list{
+      flex-direction: column;
       .a-album{
-        flex: calc(50% - 10px);
-        max-width: calc(50% - 10px);
+        flex: 100%;
+        max-width:100%;
+        display: flex;
+        .album-cover{
+          flex:25%
+        }
+        figcaption{
+          padding-left: 20px;
+          flex: 75%;
+        }
+      }
+      @media (max-width: 1200px) {
+        .a-album{
+          .album-cover{
+            flex:50%
+          }
+          figcaption{
+            flex: 50%;
+          }
+        }
+      }
+      @media (max-width: 600px) {
+        .a-album{
+          flex-direction: column;
+          .album-cover{
+            flex:100%
+          }
+          figcaption{
+            padding: 20px;
+            flex: 100%;
+          }
+        }
       }
     }
   }
