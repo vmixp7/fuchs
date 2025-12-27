@@ -246,7 +246,7 @@ html {
 }
 
 .lineQrcode {
-  width: 250px;
+  width: 200px;
   margin-left: auto;
 }
 
@@ -380,6 +380,10 @@ html {
 @media (max-width: 1580px) {
   .formosalube-header .right-menu ul {
     gap: 30px;
+  }
+
+  .formosalube-header p.slogan {
+    margin-left: 50px;
   }
 }
 
@@ -1538,6 +1542,18 @@ html {
   .formosalube-container .seminar-cont .album-list .a-album figcaption {
     padding: 20px;
     flex: 100%;
+  }
+
+  .formosalube-header p.slogan {
+    display: none;
+  }
+
+  .formosalube-header .logo2 {
+    max-width: 15vw;
+  }
+
+  .formosalube-header .logo1 {
+    width: 50vw;
   }
 }
 
