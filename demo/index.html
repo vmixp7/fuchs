@@ -10,18 +10,13 @@
     <meta name="description" content="林口興業是台塑FORMOSA與福斯FUCHS潤滑油授權經銷商，提供汽車、機車、重車與工業用高階機油，品質卓越，客戶信賴。">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="#" />
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/style.css?v=8">
-
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/bundle.min.css">
     <link rel="stylesheet" href="css/megamenu.css">
-    <!-- JS -->
-    <script src="js/menu.js?v=1.5"></script>
 
 </head>
 
@@ -442,14 +437,6 @@
                         </div>
                         <div class="text-info">
                             <h3>展覽研討活動</h3>
-                            <p><span class="f-ss">2025-11-26</span><br>2025台中國際工具機展</p>
-                            <p><span class="f-ss">2025-11-26</span><br>亞洲水泥廠內技術研討會</p>
-                            <p><span class="f-ss">2025-11-25</span><br>和平電廠廠內技術研討會</p>
-                            <!-- <ul>
-                                <li><span class="day">2025-11-26</span> 2025台中國際工具機展</li>
-                                <li><span class="day">2025-11-26</span> 亞洲水泥廠內技術研討會</li>
-                                <li><span class="day">2025-11-25</span> 和平電廠廠內技術研討會</li>
-                            </ul> -->
                         </div>
                         <span class="more">了解更多</span>
                     </a>
@@ -460,32 +447,13 @@
                         <div class="text-info">
                             <h3>促銷訊息</h3>
                             <ul>
-                                <li>只要是我們的顧客，即有機會享有VIP會員的尊榮特惠服務，請您速與我們的業務人員聯繫。</li>
-                                <li>液壓油全系列產品特惠價供貨中，請與我們的客服中心聯繫。</li>
                             </ul>
-                            <!-- <p>健康鬥陣行<br>淨山健行隊活動，歡迎您加入我們，報名請電<br><span class="f-ss">(預訂行程，請參閱)</span></p> -->
                         </div>
                         <span class="more">了解更多</span>
                     </a>
                     <div class="newList">
                         <h3 class="topTitle">市場最新消息</h3>
                         <ul>
-                            <li>
-                                <p class="date">22/09 2025</p>
-                                <a class="newTitle">經濟部推動「AI Automotive 產業大聯盟」成軍　 打造台灣智慧車電新生態、邁向國際舞台</a>
-                            </li>
-                            <li>
-                                <p class="date">10/09 2025</p>
-                                <a class="newTitle">中國9月新能源汽車均價</a>
-                            </li>
-                            <li>
-                                <p class="date">02/08 2025</p>
-                                <a class="newTitle">中國9月新能源汽車均價 首度跌破16萬人幣</a>
-                            </li>
-                            <li>
-                                <p class="date">20/07 2025</p>
-                                <a class="newTitle">智慧電動車教學中心揭牌　培育綠能人才</a>
-                            </li>
                         </ul>
                         <a class="more" href="news.html"><span>了解更多</span></a>
                     </div>
@@ -549,31 +517,76 @@
         </footer>
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="mobilemenu/pushy.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/menu.js?v=1.5"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.mySwiper', {
+            effect: "fade",
+            crossFade: true,
+            loop: true,
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // API 调用：页面加载时获取最新数据
+        $(document).ready(function () {
+            $.ajax({
+                url: `${BASE_URL}/api/index`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log('API 调用成功:', data);
+                    // 更新市场最新消息
+                    if (data.news && Array.isArray(data.news)) {
+                        var newsHtml = '';
+                        data.news.forEach(function (item) {
+                            newsHtml += '<li>';
+                            newsHtml += '<p class="date">' + (item.date || '') + '</p>';
+                            newsHtml += '<a class="newTitle">' + (item.title || '') + '</a>';
+                            newsHtml += '</li>';
+                        });
+                        $('.newList ul').html(newsHtml);
+                    }
+
+                    // 更新展览研讨活动
+                    if (data.activity && Array.isArray(data.activity)) {
+                        var activityHtml = '';
+                        data.activity.forEach(function (item) {
+                            activityHtml += '<p><span class="f-ss">' + (item.date || '') + '</span><br>' + (item.title || '') + '</p>';
+                        });
+                        $('.news-cont .aNew:first-child .text-info p').remove();
+                        $('.news-cont .aNew:first-child .text-info h3').after(activityHtml);
+                    }
+
+                    // 更新促销讯息
+                    if (data.promotion && Array.isArray(data.promotion)) {
+                        var promotionHtml = '';
+                        data.promotion.forEach(function (item) {
+                            promotionHtml += '<li>' + (item.data || '') + '</li>';
+                        });
+                        $('.news-cont .aNew:nth-child(2) .text-info ul').html(promotionHtml);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('API 调用失败:', error);
+                    console.error('状态:', status);
+                    console.error('响应:', xhr.responseText);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-<!-- pushy JS -->
-<script src="mobilemenu/pushy.js"></script>
-<script src="js/script.js"></script>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper('.mySwiper', {
-        effect: "fade",
-        crossFade: true,
-        loop: true,
-        autoplay: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>

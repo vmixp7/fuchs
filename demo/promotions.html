@@ -10,19 +10,13 @@
     <meta name="description" content="林口興業是台塑FORMOSA與福斯FUCHS潤滑油授權經銷商，提供汽車、機車、重車與工業用高階機油，品質卓越，客戶信賴。">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="#" />
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/style.css?v=8">
-
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/bundle.min.css">
     <link rel="stylesheet" href="css/megamenu.css">
-    <!-- JS -->
-    <script src="js/menu.js?v=1.5"></script>
-
 </head>
 
 <body>
@@ -436,13 +430,19 @@
             <!-- 2 -->
             <section class="info-content promotions-cont">
                 <div class="mbox">
-                    <div class="text">
-                        <p class="date">2014-02-23</p>
-                        <p class="info">只要是我們的顧客，即有機會享有VIP會員的尊榮特惠服務，請您速與我們的業務人員聯繫。</p>
+                    <div id="promotion-list" style="display: flex; flex-direction: column; gap: 15px;">
+                        <div class="text">
+                            <p class="date">2014-02-23</p>
+                            <p class="info">只要是我們的顧客，即有機會享有VIP會員的尊榮特惠服務，請您速與我們的業務人員聯繫。</p>
+                        </div>
+                        <div class="text">
+                            <p class="date">2014-02-22</p>
+                            <p class="info">液壓油全系列產品特惠價供貨中，請與我們的客服中心聯繫。</p>
+                        </div>
                     </div>
-                    <div class="text">
-                        <p class="date"> 2014-02-22</p>
-                        <p class="info">液壓油全系列產品特惠價供貨中，請與我們的客服中心聯繫。</p>
+                    <!-- 分页导航 -->
+                    <div class="pagination" id="pagination" style="display: none; justify-content: flex-end; padding-top: 30px;">
+                        <!-- 分页按钮将动态生成 -->
                     </div>
                 </div>
             </section>
@@ -460,30 +460,150 @@
         </footer>
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="mobilemenu/pushy.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/menu.js?v=1.5"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.mySwiper', {
+            effect: "fade",
+            crossFade: true,
+            loop: true,
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // 促销信息分页功能（后端分页）
+        var currentPage = 1; // 当前页码
+        var totalPages = 1; // 总页数
+        var itemsPerPage = 6; // 每页显示数量
+
+        // 加载促销信息数据（后端分页）
+        function loadPromotions(page) {
+            $.ajax({
+                url: `${BASE_URL}/api/promotions?page=${page}&limit=${itemsPerPage}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    console.log('促销信息 API 调用成功:', response);
+
+                    // 更新分页信息
+                    currentPage = response.pagination.currentPage;
+                    totalPages = response.pagination.totalPages;
+
+                    // 渲染促销信息列表
+                    var promotionHtml = '';
+                    response.data.forEach(function (item) {
+                        promotionHtml += '<div class="text">';
+                        promotionHtml += '<p class="date">' + (item.date || '') + '</p>';
+                        promotionHtml += '<p class="info">' + (item.message || '');
+                        if (item.pdf) {
+                            promotionHtml += '<a href="' + BASE_URL + item.pdf + '" target="_blank" class="pdf-link" style="display: block; text-align: right; margin-top: 10px; text-decoration: underline; color: #0066cc; font-size: 15px;">了解更多 →</a>';
+                        }
+                        promotionHtml += '</p>';
+                        promotionHtml += '</div>';
+                    });
+
+                    $('#promotion-list').html(promotionHtml);
+                    renderPagination();
+
+                    // 滚动到顶部
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+                error: function (xhr, status, error) {
+                    console.error('促销信息 API 调用失败:', error);
+                    console.error('状态:', status);
+                    console.error('响应:', xhr.responseText);
+                }
+            });
+        }
+
+        // 渲染分页导航
+        function renderPagination() {
+            if (totalPages <= 1) {
+                $('#pagination').hide();
+                return;
+            }
+
+            $('#pagination').css('display', 'flex');
+            var paginationHtml = '';
+
+            // 上一页按钮
+            if (currentPage > 1) {
+                paginationHtml += '<button onclick="loadPromotions(' + (currentPage - 1) + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">上一頁</button>';
+            }
+
+            // 页码按钮（最多显示5个）
+            var maxButtons = 5;
+            var startPage, endPage;
+
+            if (totalPages <= maxButtons) {
+                // 总页数小于等于5，显示全部
+                startPage = 1;
+                endPage = totalPages;
+            } else {
+                // 总页数大于5，显示当前页前后的页码
+                var halfButtons = Math.floor(maxButtons / 2);
+                startPage = Math.max(1, currentPage - halfButtons);
+                endPage = Math.min(totalPages, currentPage + halfButtons);
+
+                // 调整边界
+                if (currentPage - halfButtons < 1) {
+                    endPage = Math.min(totalPages, maxButtons);
+                }
+                if (currentPage + halfButtons > totalPages) {
+                    startPage = Math.max(1, totalPages - maxButtons + 1);
+                }
+            }
+
+            // 如果起始页不是第1页，显示第1页和省略号
+            if (startPage > 1) {
+                paginationHtml += '<button onclick="loadPromotions(1)" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">1</button>';
+                if (startPage > 2) {
+                    paginationHtml += '<span style="margin: 0 5px; padding: 8px 0;">...</span>';
+                }
+            }
+
+            // 显示页码
+            for (var i = startPage; i <= endPage; i++) {
+                if (i === currentPage) {
+                    paginationHtml += '<button style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: #3559f6; color: white; cursor: pointer; border-radius: 4px; font-weight: bold;">' + i + '</button>';
+                } else {
+                    paginationHtml += '<button onclick="loadPromotions(' + i + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">' + i + '</button>';
+                }
+            }
+
+            // 如果结束页不是最后一页，显示省略号和最后一页
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    paginationHtml += '<span style="margin: 0 5px; padding: 8px 0;">...</span>';
+                }
+                paginationHtml += '<button onclick="loadPromotions(' + totalPages + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">' + totalPages + '</button>';
+            }
+
+            // 下一页按钮
+            if (currentPage < totalPages) {
+                paginationHtml += '<button onclick="loadPromotions(' + (currentPage + 1) + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">下一頁</button>';
+            }
+
+            $('#pagination').html(paginationHtml);
+        }
+
+        // 页面加载时调用
+        $(document).ready(function () {
+            loadPromotions(1); // 加载第一页
+        });
+    </script>
 </body>
 
 </html>
-
-<!-- pushy JS -->
-<script src="mobilemenu/pushy.js"></script>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper('.mySwiper', {
-        effect: "fade",
-        crossFade: true,
-        loop: true,
-        autoplay: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>

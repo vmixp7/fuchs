@@ -10,19 +10,13 @@
     <meta name="description" content="林口興業是台塑FORMOSA與福斯FUCHS潤滑油授權經銷商，提供汽車、機車、重車與工業用高階機油，品質卓越，客戶信賴。">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="#" />
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/style.css?v=8">
-
     <!-- Pushy -->
     <link rel="stylesheet" href="mobilemenu/pushy.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/bundle.min.css">
     <link rel="stylesheet" href="css/megamenu.css">
-    <!-- JS -->
-    <script src="js/menu.js?v=1.5"></script>
-
 </head>
 
 <body>
@@ -436,31 +430,12 @@
             <!-- 2 -->
             <section class="info-content qa-cont">
                 <div class="mbox">
-                    <div class="text">
-                        <h4>Q14：請問我公司於越南有工廠,在當地可買到台塑潤滑油嗎?</h4>
-                        <p class="info">A14：目前台塑潤滑油主要供應給台灣地區的客戶,以及國外的台塑關係企業.國外目前並無授權的銷售代理商,若
-                            貴公司越南工廠需求台塑產品,暫時只能由台灣採購再運至越南,以上說明.</p>
+                    <div id="qa-list">
+                        <!-- Dynamic content will be loaded here -->
                     </div>
-                    <div class="text">
-                        <h4>Q13：請問台塑有金屬加工用油嗎?</h4>
-                        <p class="info">A13：目前台塑尚無該類產品,但我公司另有經銷代理相關的油品,我公司將盡速配業務同仁前去向您做說明與了解喔!</p>
-                    </div>
-                    <div class="text">
-                        <h4>Q12：有許多油行都說可以供應台塑潤滑油產品,請問為何那麼地亂呢?</h4>
-                        <p class="info">A14：目前台塑潤滑油主要供應給台灣地區的客戶,以及國外的台塑關係企業.國外目前並無授權的銷售代理商,若
-                            貴公司越南工廠需求台塑產品,暫時只能由台灣採購再運至越南,以上說明.</p>
-                    </div>
-                    <div class="text">
-                        <h4>Q14：請問我公司於越南有工廠,在當地可買到台塑潤滑油嗎?</h4>
-                        <p class="info">
-                            A12：一般的油行會採以調貨供應,但由於其非台塑正式經銷商,恐對商品的了解不是很清楚,可能在適用性的推薦上會有疑慮與不當,建議向台塑正式經銷商(如,林口興業)購買貨品,除可獲得原廠原裝貨品外,也能享有專業精準的服務,還迎來電洽詢02-26096075.
-                        </p>
-                    </div>
-                    <div class="text">
-                        <h4>Q11：目前我工廠為採用CPC產品,請問若替換為FORMOSA採用添加方式,是否可以相容呢?</h4>
-                        <p class="info">A11：潤滑油的相容性主要考量為基礎油的種類,如Group
-                            I,II,III等皆為礦物型基礎油,於生產的製程上相當只是差別於有無加氫精煉(將硫及氮化合物等雜質拿除後更純淨,熱穩定性更佳),該三類基礎油可完全相容無虞,因此CPC與FORMOSA礦物型的潤滑油得以相容,可採以添加方式進行替換,實際相關相容問題,我們將派銷售人員前去當面向您做說明與確認.
-                        </p>
+                    <div class="pagination-container"
+                        style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                        <div id="pagination"></div>
                     </div>
                 </div>
             </section>
@@ -478,30 +453,145 @@
         </footer>
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="mobilemenu/pushy.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/menu.js?v=1.5"></script>
+    <script src="js/script.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.mySwiper', {
+            effect: "fade",
+            crossFade: true,
+            loop: true,
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        // 新闻分页功能（后端分页）
+        var currentPage = 1; // 当前页码
+        var totalPages = 1; // 总页数
+        var itemsPerPage = 6; // 每页显示数量
+
+        // 加载新闻数据（后端分页）
+        function loadNews(page) {
+            $.ajax({
+                url: `${BASE_URL}/api/qa?page=${page}&limit=${itemsPerPage}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    console.log('新闻 API 调用成功:', response);
+
+                    // 更新分页信息
+                    currentPage = response.pagination.currentPage;
+                    totalPages = response.pagination.totalPages;
+
+                    // 渲染新闻列表
+                    var newsHtml = '';
+                    response.data.forEach(function (item) {
+                        newsHtml += '<div class="text">';
+                        newsHtml += '<br>';
+                        newsHtml += '<h4>Q: ' + (item.que || '') + '</h4>';
+                        newsHtml += '<p class="info">' + (item.ans || '') + '</p>';
+                        newsHtml += '</div>';
+                    });
+
+                    $('#qa-list').html(newsHtml);
+                    renderPagination();
+
+                    // 滚动到顶部
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+                error: function (xhr, status, error) {
+                    console.error('新闻 API 调用失败:', error);
+                    console.error('状态:', status);
+                    console.error('响应:', xhr.responseText);
+                }
+            });
+        }
+
+        // 渲染分页导航
+        function renderPagination() {
+            if (totalPages <= 1) {
+                $('#pagination').hide();
+                return;
+            }
+
+            $('#pagination').css('display', 'flex');
+            var paginationHtml = '';
+
+            // 上一页按钮
+            if (currentPage > 1) {
+                paginationHtml += '<button onclick="loadNews(' + (currentPage - 1) + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">上一頁</button>';
+            }
+
+            // 页码按钮（最多显示5个）
+            var maxButtons = 5;
+            var startPage, endPage;
+
+            if (totalPages <= maxButtons) {
+                // 总页数小于等于5，显示全部
+                startPage = 1;
+                endPage = totalPages;
+            } else {
+                // 总页数大于5，显示当前页前后的页码
+                var halfButtons = Math.floor(maxButtons / 2);
+                startPage = Math.max(1, currentPage - halfButtons);
+                endPage = Math.min(totalPages, currentPage + halfButtons);
+
+                // 调整边界
+                if (currentPage - halfButtons < 1) {
+                    endPage = Math.min(totalPages, maxButtons);
+                }
+                if (currentPage + halfButtons > totalPages) {
+                    startPage = Math.max(1, totalPages - maxButtons + 1);
+                }
+            }
+
+            // 如果起始页不是第1页，显示第1页和省略号
+            if (startPage > 1) {
+                paginationHtml += '<button onclick="loadNews(1)" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">1</button>';
+                if (startPage > 2) {
+                    paginationHtml += '<span style="margin: 0 5px; padding: 8px 0;">...</span>';
+                }
+            }
+
+            // 显示页码
+            for (var i = startPage; i <= endPage; i++) {
+                if (i === currentPage) {
+                    paginationHtml += '<button style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: #3559f6; color: white; cursor: pointer; border-radius: 4px; font-weight: bold;">' + i + '</button>';
+                } else {
+                    paginationHtml += '<button onclick="loadNews(' + i + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">' + i + '</button>';
+                }
+            }
+
+            // 如果结束页不是最后一页，显示省略号和最后一页
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    paginationHtml += '<span style="margin: 0 5px; padding: 8px 0;">...</span>';
+                }
+                paginationHtml += '<button onclick="loadNews(' + totalPages + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">' + totalPages + '</button>';
+            }
+
+            // 下一页按钮
+            if (currentPage < totalPages) {
+                paginationHtml += '<button onclick="loadNews(' + (currentPage + 1) + ')" style="margin: 0 5px; padding: 8px 15px; border: 1px solid #3559f6; background: white; color: #3559f6; cursor: pointer; border-radius: 4px;">下一頁</button>';
+            }
+
+            $('#pagination').html(paginationHtml);
+        }
+
+        // 页面加载时调用
+        $(document).ready(function () {
+            loadNews(1); // 加载第一页
+        });
+    </script>
 </body>
 
 </html>
-
-<!-- pushy JS -->
-<script src="mobilemenu/pushy.js"></script>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper('.mySwiper', {
-        effect: "fade",
-        crossFade: true,
-        loop: true,
-        autoplay: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>
