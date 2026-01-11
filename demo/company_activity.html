@@ -506,7 +506,7 @@
                         response.data.forEach(function (item, index) {
                             var galleryId = 'gallery' + (index + 1);
                             var title = item.title || '';
-                            var date = item.date || '';
+                            var date = item.startday || '';
 
                             // Format date if needed (YYYYMMDD to YYYY-MM-DD)
                             if (date && date.length === 8) {

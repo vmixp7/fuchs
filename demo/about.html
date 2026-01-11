@@ -432,9 +432,7 @@
                 <div class="mbox" style="padding-bottom: 0px;">
                     <div class="text">
                         <h4>背景介紹</h4>
-                        <p>林口興業有限公司是由一群的資深潤滑油銷售人員，為了經銷FORMOSA台塑潤滑油而於2012年2月所創設的公司，創立的初衷即希望將台灣最大民營企業台塑所推出的高優質Group
-                            II系列產品，藉由我們的專業能力與努力下，能夠快速地推廣到市面上，讓更多的國內企業可以很便利地獲得與世界接軌的高品質且為在地化生產的優質又實惠的產品。經數年努力耕耘下，截至2022年林口興業為台塑在台灣的最大經銷商，同時經銷販售FUCHS(德國福斯)、BASF(德國巴斯夫)、BECHEM(德國倍可)等高階潤滑油產品，歡迎隨時與我們聯繫洽詢相關產品資訊，我們將竭誠為您提供服務。<br>
-                            <br>台塑企業自1994年開始於雲林麥寮興建六輕，並於2000年開始量產販售各項石化產品，截至2013年總投資額已超過新台幣5,000億(於2012年，六輕列為全球前10大的輕油裂解廠)，該廠投入了最新的高效能生產設備及品管監控儀器，得以生產出與世界大廠媲美的石化產品，於質量與價格上都相當地具有國際競爭力。我們將秉持專業的態度與服務的熱忱，來讓優質的產品可以得到更多消費者的認同與採用，也期許能為台灣的工業發展盡一份力量。
+                        <p></p>
                     </div>
                 </div>
             </section>
@@ -447,9 +445,9 @@
                             <img src="https://www.formosalube.com.tw/images/about/photo-1.jpg" width="100%" loading="1"
                                 alt="">
                         </div>
-                        <div class="text-info">
+                        <div class="text-info target">
                             <h3>經營目標</h3>
-                            <p>供應便利且安心的高優質潤滑油，成為客戶值得信賴的好夥伴。</p>
+                            <p></p>
                         </div>
                     </div>
                     <a class="aNew" href="company_activity.html">
@@ -459,8 +457,8 @@
                         </div>
                         <div class="text-info">
                             <h3>相關活動</h3>
-                            <ul>
-                                <li>2025尾牙活動_台南大員皇冠假日酒店</li>
+                            <ul class="activity">
+                                <li></li>
                             </ul>
                         </div>
                         <span class="more">more</span>
@@ -486,12 +484,8 @@
                             <img src="https://www.formosalube.com.tw/images/about/office_1.jpg" width="100%" loading="1"
                                 alt="">
                         </div>
-                        <div class="text-info">
-                            <h3>辦公室</h3>
-                            <p>地址：新北市林口區文化二路一段266號B1<br>
-                                電話：02-2609-6075<br>
-                                傳真：02-2609-3761
-                            </p>
+                        <div class="text-info addr_of">
+                            <p></p>
                         </div>
                     </div>
                     <div class="aLocations">
@@ -499,12 +493,8 @@
                             <img src="https://www.formosalube.com.tw/images/about/warehouse_1.jpg" width="100%"
                                 loading="1" alt="">
                         </div>
-                        <div class="text-info">
-                            <h3>林口倉</h3>
-                            <p>地址：新北市林口區太平里23之12號<br>
-                                電話：02-2600-6655<br>
-                                傳真：02-2600-0938
-                            </p>
+                        <div class="text-info addr_lk">
+                            <p></p>
                         </div>
                     </div>
                     <div class="aLocations">
@@ -512,12 +502,8 @@
                             <img src="https://www.formosalube.com.tw/images/about/warehouse_2.jpg" width="100%"
                                 loading="1" alt="">
                         </div>
-                        <div class="text-info">
-                            <h3>彰化倉</h3>
-                            <p>地址：彰化縣線西鄉彰濱東十路6號<br>
-                                電話：04-7910-800<br>
-                                傳真：04-7910-866
-                            </p>
+                        <div class="text-info addr_tc">
+                            <p></p>
                         </div>
                     </div>
                     <div class="aLocations">
@@ -525,12 +511,8 @@
                             <img src="https://www.formosalube.com.tw/images/warehouse_3.jpg" width="100%" loading="1"
                                 alt="">
                         </div>
-                        <div class="text-info">
-                            <h3>高雄倉</h3>
-                            <p>地址：高雄市大寮區大發工業區利民街13號<br>
-                                電話：07-7878-530<br>
-                                傳真：07-7879-115
-                            </p>
+                        <div class="text-info addr_ks">
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -574,4 +556,48 @@
             prevEl: '.swiper-button-prev',
         },
     });
+    $(document).ready(function () {
+        $.ajax({
+            url: `${BASE_URL}/api/fuchs-about`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                console.log('about API 调用成功:', response);
+                const about_txt = response.about.replaceAll(/\r\n|\r|\n/g, '<br>');
+                const target = response.target.replaceAll(/\r\n|\r|\n/g, '<br>');
+                const addr_of = response.addr_of.replaceAll(/\r\n|\r|\n/g, '<br>');
+                const addr_lk = response.addr_lk.replaceAll(/\r\n|\r|\n/g, '<br>');
+                const addr_tc = response.addr_tc.replaceAll(/\r\n|\r|\n/g, '<br>');
+                const addr_ks = response.addr_ks.replaceAll(/\r\n|\r|\n/g, '<br>');
+                $('.text p').html(about_txt);
+                $('.target p').html(target);
+                $('.addr_of p').html(addr_of);
+                $('.addr_lk p').html(addr_lk);
+                $('.addr_tc p').html(addr_tc);
+                $('.addr_ks p').html(addr_ks);
+            },
+            error: function (xhr, status, error) {
+                console.error('about API 调用失败:', error);
+                console.error('状态:', status);
+                console.error('响应:', xhr.responseText);
+            }
+        });
+        $.ajax({
+            url: `${BASE_URL}/api/company-activities?page=1`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                console.log('act--', response)
+                if (response.data.length > 0) {
+                    const txt = `<li>${response.data[0].title}</li>`;
+                    $('.activity').html(txt);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('activities API 调用失败:', error);
+                console.error('状态:', status);
+                console.error('响应:', xhr.responseText);
+            }
+        })
+    })
 </script>
